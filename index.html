@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Números Loteria Federal</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Números Loteria Federal</h1>
+        <small>Sorteia números para o 1º ao 5º prêmio.</small>
+
+        <p><small>Escolha pelo menos 2 números fixos para cada prêmio</small></p>
+        
+        <div class="selection-type">
+            <label for="selection-type">Tipo de Fixação:</label>
+            <select id="selection-type" onchange="toggleSelectionType()">
+                <option value="individual">Para cada prêmio</option>
+                <option value="all-prizes">Para todos os prêmios</option>
+            </select>
+        </div>
+
+        <div id="individual-selection">
+            <h3>Fixar para cada prêmio</h3>
+            <div class="number-selection">
+                <h3>1º Prêmio</h3>
+                <label for="fixed-number-1-1">Número Fixo 1:</label>
+                <input type="number" id="fixed-number-1-1" min="0" max="99" onchange="validateDuplicateNumbers(1)">
+                
+                <label for="fixed-number-1-2">Número Fixo 2:</label>
+                <input type="number" id="fixed-number-1-2" min="0" max="99" onchange="validateDuplicateNumbers(1)">
+            </div>
+            
+            <div class="number-selection">
+                <h3>2º Prêmio</h3>
+                <label for="fixed-number-2-1">Número Fixo 1:</label>
+                <input type="number" id="fixed-number-2-1" min="0" max="99" onchange="validateDuplicateNumbers(2)">
+                
+                <label for="fixed-number-2-2">Número Fixo 2:</label>
+                <input type="number" id="fixed-number-2-2" min="0" max="99" onchange="validateDuplicateNumbers(2)">
+            </div>
+            
+            <div class="number-selection">
+                <h3>3º Prêmio</h3>
+                <label for="fixed-number-3-1">Número Fixo 1:</label>
+                <input type="number" id="fixed-number-3-1" min="0" max="99" onchange="validateDuplicateNumbers(3)">
+                
+                <label for="fixed-number-3-2">Número Fixo 2:</label>
+                <input type="number" id="fixed-number-3-2" min="0" max="99" onchange="validateDuplicateNumbers(3)">
+            </div>
+            
+            <div class="number-selection">
+                <h3>4º Prêmio</h3>
+                <label for="fixed-number-4-1">Número Fixo 1:</label>
+                <input type="number" id="fixed-number-4-1" min="0" max="99" onchange="validateDuplicateNumbers(4)">
+                
+                <label for="fixed-number-4-2">Número Fixo 2:</label>
+                <input type="number" id="fixed-number-4-2" min="0" max="99" onchange="validateDuplicateNumbers(4)">
+            </div>
+            
+            <div class="number-selection">
+                <h3>5º Prêmio</h3>
+                <label for="fixed-number-5-1">Número Fixo 1:</label>
+                <input type="number" id="fixed-number-5-1" min="0" max="99" onchange="validateDuplicateNumbers(5)">
+                
+                <label for="fixed-number-5-2">Número Fixo 2:</label>
+                <input type="number" id="fixed-number-5-2" min="0" max="99" onchange="validateDuplicateNumbers(5)">
+            </div>
+        </div>
+
+        <div id="all-prizes-selection" style="display: none;">
+            <div class="number-selection">
+                <h3>Fixar para todos os prêmios</h3>
+                <label for="fixed-number-all-1">Número Fixo 1:</label>
+                <input type="number" id="fixed-number-all-1" min="0" max="99">
+                
+                <label for="fixed-number-all-2">Número Fixo 2:</label>
+                <input type="number" id="fixed-number-all-2" min="0" max="99">
+            </div>
+        </div>
+        
+        <button onclick="generateNumbers()">Gerar Números</button>
+        <button onclick="saveGame()">Salvar Jogo</button>
+        <button onclick="exportToExcel()">Exportar para Excel</button>
+        <div id="generated-numbers" class="numbers-display"></div>
+        <div id="saved-games" class="numbers-display"></div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
